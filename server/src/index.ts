@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import admin from 'firebase-admin';
-import serviceAccount from './biltup-firebase-svc-key.json';
+import serviceAccount from '../../../firebase-auth-svc-key.json';
 import path from "node:path";
 import * as fs from "node:fs";
 
