@@ -3,12 +3,14 @@ import {
   Auth,
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
+  OAuthProvider,
   signInWithEmailAndPassword,
   signInWithPopup
 } from '@angular/fire/auth';
 import { HttpClient } from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {AngularFireAuth} from '@angular/fire/compat/auth';
+import type {AuthProvider} from '@firebase/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -31,10 +33,20 @@ export class AuthService {
     return creds;
   }
 
+  async microsoftSignIn() {
+    const provider = new OAuthProvider('microsoft.com');
+    return await this.genericSignIn(provider);
+  }
+
   async googleSignIn() {
     const provider = new GoogleAuthProvider();
+    return await this.genericSignIn(provider);
+  }
+
+  private async genericSignIn(provider: AuthProvider) {
     const credential = await runInInjectionContext(this.injector, async () => await signInWithPopup(this.auth, provider));
     console.log(`creds=${JSON.stringify(credential)}`);
+
 
     const token = await credential.user?.getIdToken();
     this.http.post('http://localhost:3000/verifyToken', { token }).subscribe(response => {

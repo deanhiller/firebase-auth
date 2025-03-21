@@ -228,7 +228,9 @@
       <h1>Hello, {{ title }}</h1>
       <p>Congratulations! Your app is running. 🎉</p>
 
-      <app-sign-in></app-sign-in>
+      <googleapp-sign-in></googleapp-sign-in>
+
+      <microsoft-sign-in></microsoft-sign-in>
 
       <form (submit)="signUp()">
         <input type="email" name="email" [(ngModel)]="email" placeholder="Email" required />

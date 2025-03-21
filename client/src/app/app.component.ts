@@ -1,13 +1,14 @@
 import {Component, inject} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {SignInComponent} from './sign-in/sign-in.component';
+import {GoogleSignInComponent} from './sign-in/google-sign-in.component';
 import {FormsModule, NgModel} from '@angular/forms';
 import {AuthService} from './auth.service';
+import {MicrosoftSignInComponent} from './sign-in/microsoft/microsoft-sign-in.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, SignInComponent, FormsModule],
+  imports: [RouterOutlet, GoogleSignInComponent, FormsModule, MicrosoftSignInComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

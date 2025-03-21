@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 
 @Component({
-  selector: 'app-sign-in',
+  selector: 'googleapp-sign-in',
   standalone: true,
-  template: `<button (click)="signInWithGoogle()">Sign in with Google</button>`
+  templateUrl: './google-sign-in.component.html',
 })
-export class SignInComponent {
+export class GoogleSignInComponent {
   constructor(private authService: AuthService) {}
 
   signInWithGoogle() {
