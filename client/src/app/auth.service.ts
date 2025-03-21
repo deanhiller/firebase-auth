@@ -5,12 +5,10 @@ import {
   GoogleAuthProvider,
   OAuthProvider,
   signInWithEmailAndPassword,
-  signInWithPopup
+  signInWithPopup,
+  AuthProvider
 } from '@angular/fire/auth';
 import { HttpClient } from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {AngularFireAuth} from '@angular/fire/compat/auth';
-import type {AuthProvider} from '@firebase/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -49,7 +47,7 @@ export class AuthService {
 
 
     const token = await credential.user?.getIdToken();
-    this.http.post('http://localhost:3000/verifyToken', { token }).subscribe(response => {
+    this.http.post('http://localhost:3000/verifyToken', {token}).subscribe(response => {
       console.log('Backend verification response:', response);
     });
     return credential.user;
